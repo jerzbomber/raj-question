@@ -53,18 +53,18 @@ const calcMktVal = (endPrice, qty) => {
 // more concise than _.default({},{},{}) or Object.assign({},{},{}).
 
 // You can see it in action in the return statement.
-// Here I'm using the spread operator to copy enumerable properties
+// Here I'm using the object spread syntax to copy enumerable properties
 // from one object to another in a more succinct way.
-let newTransactions = transactions.map(t => {
+let newTransactions = transactions.map(trans => {
   // let's memoize the calculated values for later use
-  let costBasis = calcCostBasis(t.startPrice, t.qty)
-  let mktVal = calcMktVal(t.endPrice, t.qty)
+  let costBasis = calcCostBasis(trans.startPrice, trans.qty)
+  let mktVal = calcMktVal(trans.endPrice, trans.qty)
 
-  // use the object spread operator to create a new object
+  // use the object spread syntax to create a new object
   // and add additional properties
   return {
-    ...t,
-    ticker: findSymbol(t.id),
+    ...trans,
+    ticker: findSymbol(trans.id),
     costBasis: costBasis,
     mktVal: mktVal,
     gainLoss: mktVal - costBasis
@@ -72,4 +72,4 @@ let newTransactions = transactions.map(t => {
 })
 
 // output results to console (pretty-printing is set using the third arg)
-console.log('output', JSON.stringify(newTransactions, null, 2))
+console.log(JSON.stringify(newTransactions, null, 2))
