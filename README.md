@@ -3,11 +3,12 @@
 This project proposes one way to solve the following:
 
 *Given an array of transactions, want to return similar array
-with some added info.*
+with some added info while avoiding having to call dependent functions more than
+once.*
 
 ### Proposed Solution
 Memoize values inside of the map function and use object spread syntax
-instead of _.default() or Object.assign().
+instead of _.default() or Object.assign() to make it more concise.
 
 **Note that object spread syntax is a Stage 2 proposal for ECMAScript. However,
 it is currently being used in production by several large projects such as
@@ -60,3 +61,7 @@ Pay special attention to the following files:
 * **package.json** - devDependencies section
 * **.babelrc** - note the transform-object-rest-spread plugin
 * **example.js** - read through the comments
+
+## Reference
+
+[Babel object rest spread transform](https://babeljs.io/docs/plugins/transform-object-rest-spread/)
